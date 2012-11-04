@@ -28,4 +28,9 @@ Todo (in no best order):
 * Live refreshing
 * Side-bar style widget for mainpages
 * cron-like thumbnail refresh so the client doesn't feel it
+* support multiple date styles 
+* support pulling images for the scroller from older dates.
 
+Changes:
+11-04-2012a:
+	Updated to support multiple folders in the root by reversing the sort order

@@ -53,9 +53,9 @@ if(isset($_GET["page"])) {
 
 
 $dir    = '/home/jacob/eyefi1';
-$files1 = scandir($dir);
+$files1 = scandir($dir,1);
 // print_r($files1);
-$files2 = scandir($dir . "/" . $files1[2],1);
+$files2 = scandir($dir . "/" . $files1[0],1);
 // print_r($files2);
 $maxnum = count($files2) - 2;
 if ( $page > 1 ) {
@@ -76,8 +76,8 @@ if ( $start + $end > $maxnum ) {
 if( $alldone != 1 ) {   // not all done
 $files3 = array_slice($files2,$start,$end);
 // print_r($files3);
-if ( !is_dir($dir . "/" . $files1[2] . "/thumbs")) {
-	mkdir($dir . "/" . $files1[2] . "/thumbs");
+if ( !is_dir($dir . "/" . $files1[0] . "/thumbs")) {
+	mkdir($dir . "/" . $files1[0] . "/thumbs");
 	echo "dir didnt exist, making it";
 }
 
@@ -86,24 +86,24 @@ foreach($files3 as $pic) {
 	$picparts = explode(".", $pic);
 //	echo $pic;
 //	print_r($picparts);
-	if ( !file_exists($dir . "/" . $files1[2] . "/thumbs/" . $picparts[0] . "_t.jpg")) {
-		make_thumb($dir . "/" . $files1[2] . "/" . $pic, $dir . "/" . $files1[2] . "/thumbs/" . $picparts[0] . "_t.jpg", 300);
+	if ( !file_exists($dir . "/" . $files1[0] . "/thumbs/" . $picparts[0] . "_t.jpg")) {
+		make_thumb($dir . "/" . $files1[0] . "/" . $pic, $dir . "/" . $files1[0] . "/thumbs/" . $picparts[0] . "_t.jpg", 300);
 //		echo "thumb didnt exist. making it.";
 	}
 ?>
 
 	<li class="">
-            <a id="<?php echo $pic; ?>" class="open" rel="timelapse" href="<?php echo "http://jjrosent.zrg.cc/eyefi1/$files1[2]/$pic"; ?>" title="<?php echo $pic; ?>">
+            <a id="<?php echo $pic; ?>" class="open" rel="timelapse" href="<?php echo "http://jjrosent.zrg.cc/eyefi1/$files1[0]/$pic"; ?>" title="<?php echo $pic; ?>">
                 <div class="info">
                     <?php echo $pic; ?>                </div>
-                <img src="<?php echo "http://jjrosent.zrg.cc/eyefi1/$files1[2]/thumbs/$picparts[0]_t.jpg"; ?>" class="thumb"/>
+                <img src="<?php echo "http://jjrosent.zrg.cc/eyefi1/$files1[0]/thumbs/$picparts[0]_t.jpg"; ?>" class="thumb"/>
                 <img src="/images/fill.gif" class="fill"/>
             </a>
         </li>
 
 
 <?php
-	// echo "<a href=\"http://jjrosent.zrg.cc/eyefi1/$files1[2]/$pic\"><img src=\"http://jjrosent.zrg.cc/eyefi1/$files1[2]/thumbs/$picparts[0]_t.jpg\"></a>";
+	// echo "<a href=\"http://jjrosent.zrg.cc/eyefi1/$files1[0]/$pic\"><img src=\"http://jjrosent.zrg.cc/eyefi1/$files1[0]/thumbs/$picparts[0]_t.jpg\"></a>";
 }
 } // all done
 ?>
