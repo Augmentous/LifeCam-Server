@@ -31,7 +31,9 @@ Todo (in no best order):
 # * cron-like thumbnail refresh so the client doesn't feel it
 # * support multiple date styles 
 # * support pulling images for the scroller from older dates.
-* support multiple users on different unix users on one apache user with a ?user= style switch or soemhting.
+# * support multiple users on different unix users on one apache user with a ?user= style switch or soemhting.
+* 4-up live view to see what everyone is doing
+* spacing between images to convey time dilation
 
 Changes:
 11-04-2012a:
@@ -42,4 +44,12 @@ Changes:
 	Removed limits on the number of images, which could cause server pain.
 	Cleaned a ton of code, still not very efficient
 	Made it work with multiple folder
+11-12-2012:
+	Converted image loading over to a json interface and made the entire front page static. No php on the front page anymore. is a .html file
+	now support multiple users with multiple cameras per user.
+	All users get thumbnails. Put the thumbnails for a folder in the folder and call it profile.jpg
+	moved everyone users data to a common location /data/uploads
+	seperated the thumbnails from the images (/data/uploads_t). Made thumbnails a function of the server not the user
+	prep work for live refresh and dashboard.
+	added some comments but not enough probably.
 	
